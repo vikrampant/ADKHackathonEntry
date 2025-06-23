@@ -1,4 +1,3 @@
-
 [![Sainou.AI Demo](https://img.youtube.com/vi/jBtUBju_SrE/0.jpg)](https://www.youtube.com/watch?v=jBtUBju_SrE)
 
 ## Project Name: Sainou.AI
@@ -8,8 +7,16 @@
 **Elevator Pitch:** For the Google ADK Hackathon, I'm building a Multi-Agentic Hiring Workflow to streamline the recruitment process, reducing time and cost for both companies and candidates while fostering a more engaging and transparent experience.
 
 ## DevPost Hackathon
-[Project Page](https://devpost.com/software/xxx-m05ywz)
-[Blog Post](https://vikrampant.com/blog/my-week-long-journey-with-google-agent-development-kit-adk-for-a-hackathon-entry/)
+* [Project Page](https://devpost.com/software/xxx-m05ywz)
+* [Blog Post](https://vikrampant.com/blog/my-week-long-journey-with-google-agent-development-kit-adk-for-a-hackathon-entry/)
+
+## Diagrams
+
+### System Overview
+![System Overview](img/diagram_overview.png)
+
+### Multi-Agent Architecture
+![Multi-Agent Architecture](img/diagram_mutli-agent.png)
 
 ## Running This Yourself
 
