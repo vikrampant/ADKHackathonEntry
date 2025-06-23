@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Apply to Job
+{% endblock %}
+
+{% block body %}
+<div class="text-center py-5">
+    <h2 class="mb-4">Apply to Job</h2>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="resume_content" class="form-label">Resume/CV</label>
+                        <textarea 
+                            class="form-control" 
+                            id="resume_content" 
+                            name="resume_content" 
+                            rows="10" 
+                            placeholder="Please paste your resume here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

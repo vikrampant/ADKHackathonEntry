@@ -1,0 +1,46 @@
+
+Bad Tester JD:
+We need someone to, like, make sure our stuff works. You'll be writing scripts, probably in something, and dealing with bugs. Must be a 'self-starter' (meaning we won't tell you what to do) and comfortable with 'fast-paced environments' (meaning chaos). Experience is a plus, but honestly, we're just looking for someone willing to learn...on the job...from us...eventually. Bonus points if you can fix the coffee machine.
+
+Bad Resume:
+Bartholomew "Bart" Higgins
+(555) 123-4567 | bart.higgins@email.com | LinkedIn: (Probably Doesn't Have One)
+
+Summary
+
+I'm a person who likes computers. I've done some stuff with them. I'm looking for a job. I'm good at learning (sometimes). I'm a hard worker (when I feel like it).
+
+Experience
+
+Freelance Automation Tester (2022 - Present)
+
+Did some tests.
+Used Selenium, I think.
+Wrote some code. It worked… mostly.
+Sometimes things broke. It wasn't always my fault.
+Client satisfaction: Varies.
+Data Entry Clerk (Acme Corp, 2018 - 2020)
+
+Typed things into a computer.
+Learned a lot about spreadsheets. (Excel is hard!)
+Occasionally made mistakes.
+Skills
+
+Selenium (Sort of)
+Java (A little bit)
+Python (Heard it's good)
+Excel (Basic)
+Testing (I guess?)
+Problem Solving (When I have time)
+Communication (Sometimes)
+Education
+
+Community College of Somewhere, 2016-2018
+
+Took some classes. Got a certificate. It's framed.
+Projects
+
+My Website: It's online. It's… there. (bartshomepage.tripod.com)
+References
+
+Available upon request (but they might not say good things).

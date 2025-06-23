@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+View All JobReq
+{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center">View All Job Requisitions</h2>
+    
+    {% if jobreqs %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Job Title</th>
+                    <th>Experience Level</th>
+                    <th>Approval Status</th>
+                    <th>Job Type</th>
+                    <th>Employment Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jobreq in jobreqs %}
+                <tr>
+                    <td><a href="/jobreq/{{ jobreq.job_id }}">{{ jobreq.job_title }}</a></td>
+                    <td>{{ jobreq.job_experience_level.replace('experience_level_', '') }}</td>
+                    <td>
+                        <span class="badge {% if jobreq.job_approval_status == 'Approved' %}bg-success{% elif jobreq.job_approval_status == 'Pending' %}bg-warning{% elif jobreq.job_approval_status == 'Rejected' %}bg-danger{% else %}bg-secondary{% endif %}">
+                            {{ jobreq.job_approval_status }}
+                        </span>
+                    </td>
+                    <td>{{ jobreq.job_type.replace('type_', '') }}</td>
+                    <td>{{ jobreq.employment_type.replace('employment_type_', '') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="text-center">
+        <p class="lead text-muted">No job requisitions found.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

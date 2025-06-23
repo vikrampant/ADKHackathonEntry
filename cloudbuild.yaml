@@ -1,0 +1,47 @@
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/adk-hackathon:$COMMIT_SHA', '.']
+    
+  # Push the Docker image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/adk-hackathon:$COMMIT_SHA']
+    
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'adk-hackathon'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/adk-hackathon:$COMMIT_SHA'
+      - '--region'
+      - 'us-east1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '9999'
+      - '--memory'
+      - '512Mi'
+      - '--cpu'
+      - '1'
+      - '--max-instances'
+      - '10'
+      - '--timeout'
+      - '300'
+      - '--set-env-vars'
+      - 'PYTHONPATH=/app/src,PYTHONUNBUFFERED=1'
+
+# Store images in Google Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/adk-hackathon:$COMMIT_SHA'
+
+# Build timeout
+timeout: '1200s'
+
+# Options for the build
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8' 

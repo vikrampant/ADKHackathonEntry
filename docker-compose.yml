@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  adk-hackathon:
+    build: .
+    ports:
+      - "9999:9999"
+    volumes:
+      # Mount data directory for SQLite database persistence
+      - ./data:/app/data
+      # Mount agents directory for session database persistence
+      - ./src/agents:/app/src/agents
+    environment:
+      - PYTHONPATH=/app/src
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9999/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sainou AI - Google Agent Development Kit (ADK) Hackathon
+{% endblock %}
+
+{% block body %}
+<div class="text-center py-5">
+    <h2 class="mb-4">Welcome!</h2>
+    <!-- <p class="lead mb-4">(add blurb here)</p> -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 col-md-6 mb-3 mb-md-0">
+            <a href="/create-jobreq" class="btn btn-primary btn-lg w-100">Create JobReq</a>
+        </div>
+        <div class="col-12 col-md-6 mb-3 mb-md-0">
+            <a href="/view-jobreq-all" class="btn btn-primary btn-lg w-100">View All JobReqs</a>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col-12 col-md-6 mb-3 mb-md-0">
+            <a href="/finance-approve-jobreq" class="btn btn-primary btn-lg w-100">Finance Approval</a>
+        </div>
+        <div class="col-12 col-md-6 mb-3 mb-md-0">
+            <a href="/secondlevel-approve-jobreq" class="btn btn-primary btn-lg w-100">2nd Level Approval</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <a href="/candidates/jobs" class="btn btn-primary btn-lg w-100">Candidates Apply</a>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="/candidates/engage" class="btn btn-primary btn-lg w-100">Candidates Engage</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}
+View JobReq Details
+{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Job Request Details</h2>
+                <a href="/view-jobreq-all" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+            
+            <!-- Job Title Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">{{ jobreq.job_title }}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-muted mb-1">Job ID</p>
+                            <p class="fw-bold">{{ jobreq.job_id }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-muted mb-1">Location</p>
+                            <p class="fw-bold">{{ jobreq.job_location }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Details Section -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Job Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Job Type</p>
+                                <span class="badge bg-info">{{ jobreq.job_type }}</span>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Employment Type</p>
+                                <span class="badge bg-success">{{ jobreq.employment_type }}</span>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Experience Level</p>
+                                <span class="badge bg-warning text-dark">{{ jobreq.job_experience_level }}</span>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Salary Range</p>
+                                <p class="fw-bold">${{ jobreq.salary_min }} - ${{ jobreq.salary_max }}</p>
+                            </div>
+                            {% if jobreq.revised_job_title %}
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Revised Job Title</p>
+                                <p class="fw-bold">{{ jobreq.revised_job_title }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Approval Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Status</p>
+                                {% if jobreq.job_approval_status == 'Approved' %}
+                                    <span class="badge bg-success">{{ jobreq.job_approval_status }}</span>
+                                {% elif jobreq.job_approval_status == 'Pending' %}
+                                    <span class="badge bg-warning text-dark">{{ jobreq.job_approval_status }}</span>
+                                {% elif jobreq.job_approval_status == 'Rejected' %}
+                                    <span class="badge bg-danger">{{ jobreq.job_approval_status }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ jobreq.job_approval_status }}</span>
+                                {% endif %}
+                            </div>
+                            {% if jobreq.job_approval_status_tracker_id %}
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Tracker ID</p>
+                                <p class="fw-bold">{{ jobreq.job_approval_status_tracker_id }}</p>
+                            </div>
+                            {% endif %}
+                            {% if jobreq.job_approval_status_notes_by_approver %}
+                            <div class="mb-3">
+                                <p class="text-muted mb-1">Approver Notes</p>
+                                <p class="fw-bold">{{ jobreq.job_approval_status_notes_by_approver }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Description Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Job Description</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <p class="text-muted mb-2">Original Description</p>
+                        <div class="border rounded p-3 bg-light">
+                            {{ jobreq.job_description|nl2br }}
+                        </div>
+                    </div>
+                    
+                    {% if jobreq.job_description_analysis %}
+                    <div class="mb-4">
+                        <p class="text-muted mb-2">Analysis</p>
+                        <div class="border rounded p-3 bg-light">
+                            {{ jobreq.job_description_analysis|nl2br }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if jobreq.job_description_recommended %}
+                    <div class="mb-4">
+                        <p class="text-muted mb-2">Recommended Description</p>
+                        <div class="border rounded p-3 bg-light">
+                            {{ jobreq.job_description_recommended|nl2br }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="row mb-4">
+                {% if jobreq.required_skills %}
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Required Skills</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="border rounded p-3 bg-light">
+                                {{ jobreq.required_skills|nl2br }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if jobreq.preferred_skills %}
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Preferred Skills</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="border rounded p-3 bg-light">
+                                {{ jobreq.preferred_skills|nl2br }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Engagement Questions Section -->
+            {% if jobreq.engagement_questions %}
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Engagement Questions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="border rounded p-3 bg-light">
+                        {{ jobreq.engagement_questions|nl2br }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/view-jobreq-all" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Back to All Job Requests
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

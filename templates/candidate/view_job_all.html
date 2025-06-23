@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+View All Jobs
+{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center">View All Jobs</h2>
+    
+    {% if jobs %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Job Title</th>
+                    <th>Experience Level</th>
+                    <th>Employment Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td><a href="/candidates/jobs/{{ job.job_id }}">{{ job.job_title }}</a></td>
+                    <td>{{ job.job_experience_level.replace('experience_level_', '') }}</td>
+                    <td>{{ job.employment_type.replace('employment_type_', '') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="text-center">
+        <p class="lead text-muted">No jobs found.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
